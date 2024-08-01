@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="content">
+{% comment %} <h3>{{title}}</h3> {% endcomment %}
+            {{content|safe}}
+        </div>
+{% endblock %}

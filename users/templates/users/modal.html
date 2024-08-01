@@ -1,0 +1,141 @@
+<!--========-modal==================-->
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Авторизация</h1> -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="enter-tab" data-bs-toggle="tab" data-bs-target="#enter"
+                                type="button" role="tab" aria-controls="enter" aria-selected="true">Вход
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register"
+                                type="button" role="tab" aria-controls="register" aria-selected="false">Регистрация
+                        </button>
+                    </li>
+
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="enter" role="tabpanel" aria-labelledby="enter-tab">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="alert alert-danger d-none" role="alert"></div>
+                            <form action="{% url 'users:login_ajax' %}" method="post" id="form_login">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    {{login_ajax.email.label}}
+                                    {{login_ajax.email}}
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="password">
+                                        {{login_ajax.password.label}}
+                                        {{login_ajax.password}}
+
+                                    </div><!--password-->
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <label>
+                                        <input type='checkbox' id="show_pass_enter"> <label for="show_pass_enter">Показать
+                                        пароль</label>
+                                    </label>
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
+                                </div><!--col-->
+                            </div><!--row-->
+                        </div><!--container-->
+                    </div><!--modal-body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                        </form>
+                    </div><!--modal footer-->
+                </div><!--enter tab-->
+
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <div class="modal-body">
+
+                        <form action="{% url 'users:register' %}" method="post" id="form_reg">
+                            {% csrf_token %}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                         {{registr_ajax.username.label}}
+                                        <div class="alert alert-danger d-none error_username" role="alert"></div>
+                                        {{registr_ajax.username}}
+
+                                    </div><!--col-->
+                                </div><!--row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="alert alert-danger d-none error_email" role="alert"></div>
+                                        {{registr_ajax.email.label}}
+                                        {{registr_ajax.email}}
+
+                                    </div><!--col-->
+                                </div><!--row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="alert alert-danger d-none error_phone" role="alert"></div>
+                                        <!--                                                <label for="online_phone">Телефон</label>-->
+                                        {{registr_ajax.phone.label}}
+                                        {{registr_ajax.phone}}
+
+                                    </div><!--col-->
+                                </div><!--row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="alert alert-danger d-none error_password2" role="alert"></div>
+                                        <div class="password">
+                                            {{registr_ajax.password1.label}}
+                                            {{registr_ajax.password1}}
+                                        </div><!--password-->
+                                    </div><!--col-->
+                                </div><!--row-->
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="password">
+                                            {{registr_ajax.password2.label}}
+                                            {{registr_ajax.password2}}
+                                        </div><!--password-->
+                                    </div><!--col-->
+                                </div><!--row-->
+
+                                <div class="row">
+                                    <div class="col">
+                                        <lable>
+                                            <input type='checkbox' id="show_pass_reg"> <label for="show_pass_reg">Показать
+                                            пароль</label>
+                                        </lable>
+                                    </div><!--col-->
+                                </div><!--row-->
+
+                            </div><!--container-->
+
+
+                    </div><!--modal-body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Регистрация</button>
+                    </div><!--modal footer-->
+                </div><!--register tab-->
+                </form>
+            </div><!--tab-content-->
+
+        </div><!--modal-content-->
+    </div><!--modal-dialog-->
+</div><!--modal-->
+<!--===========MODAL END=====================-->

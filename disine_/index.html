@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш Шиномонтаж</title>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> -->
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-start"><!--1-->
+                        <a href="tel:+79173212185" class="btn btn-success ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                              </svg>
+                            </a>
+                            <span class="vis_elem"> +7 (917) 321 2185</span>
+                    </div><!--col-->
+                    <div class="col text-center d-none d-md-block">
+                        <h3>Ваш Шиномонтаж</h3>
+                    </div><!--col-->
+                    <div class="col text-center d-block d-sm-none">
+                        <span style="font-size: 15px;">Ваш Шиномонтаж</span>
+                    </div><!--col-->
+                    <div class="col text-end">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Вход</button>
+                    </div><!--col-->
+                </div><!--row-->
+            </div><!--container-->
+        </header><!--header--->
+        <main class="main">
+            <!---------------NAVIGATION------------------------>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"><img src="/img/7361447.png" width="80px" alt=""> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Переключатель навигации">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/services.html">Услуги</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/price.html">Цены</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact.html">Контакты</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+            <!---------------NAVIGATION END------------------------>
+            <!--------------CONTENT------------------------------------------>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Добро пожаловать на наш сервис шиномонтажа!</h2>
+            <p>Мы предоставляем качественные услуги по установке и замене шин. Обеспечиваем быстрое и
+                профессиональное
+                обслуживание вашего автомобиля.</p>
+            <h3>Запишитесь на шиномонтаж</h3>
+            <div id="message"></div>
+                </div><!--col-->
+            </div><!--row-->
+
+            <div class="row">
+                <div class="col-md-4 form-label">
+                    <input type="text" id="avto" name="avto" placeholder="Ваш автомобиль(марка)" required>
+                </div>
+                <div class="col-md-4 form-label">
+                    <input type="date" id="date" name="date" required
+                        onchange="handleDateChange(event)">
+                </div>
+                <div class="col-md-4 form-label">
+
+                    <table id="table_time">
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="08:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="08:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="09:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="09:30"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="10:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="10:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="11:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="11:30"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="12:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="12:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="13:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="13:30"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="14:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="14:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="15:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="15:30"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="16:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="16:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="17:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="17:30"></td>
+                        </tr>
+                        <tr style="text-align: center;">
+                            <td><input type="button" name="" class="btn btn-dark" value="18:00"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="18:30"></td>
+                            <td><input type="button" name="" class="btn btn-dark" value="19:00"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-label">
+                        <input type="submit" value="Записаться" class="btn btn-dark">
+                    </div>
+                </div><!--row-->
+            </div><!--row-->
+        </div><!--container-->
+            <!----------------------------CONTENT END---------------------------->
+              <!-------------------modal---------------------------->
+            <!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Авторизация</h1> -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="enter-tab" data-bs-toggle="tab" data-bs-target="#enter" type="button" role="tab" aria-controls="enter" aria-selected="true">Вход</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">Регистрация</button>
+            </li>
+            
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade show active" id="enter" role="tabpanel" aria-labelledby="enter-tab">
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <lable for="email">E-mail</lable>
+                                    <input type="email" class="form-control form-value" id="email">
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="password">
+                                    <lable for="password">Пароль</lable>
+                                    <input type="password" class="form-control form-value" id="password">
+                                    <a href="#" class="password-control"></a>
+                                </div><!--password-->
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#">Забыли пароль?</a>
+                                </div><!--col-->
+                            </div><!--row-->
+                          </div><!--container-->
+                    </div><!--modal-body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-primary" disabled>Войти</button>
+                      </div><!--modal footer-->
+                </div><!--enter tab-->
+
+                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                    <div class="modal-body">
+                        <form id="form_reg" method="get">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="name_reg">Ваше имя</label>
+                                    <input type="text" id="name_reg" class="form-control form-value" required>
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <label for="name_reg">E-mail</label>
+                                    <input type="email" id="email_reg" class="form-control form-value" required>
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <label for="online_phone">Телефон</label>
+                                    <input id="online_phone" name="phone" type="tel" maxlength="50"
+                                            required="required" value=""
+                                            pattern="[+]{1}7 [(]{1}[0-9]{3}[)]{1} [0-9]{3} [0-9]{4}"
+                                            placeholder="+7 (999) 123 4455" class="form-control">
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="password">
+                                    <label for="password_reg">Пароль</label>
+                                    <input type="password" id="password_reg" class="form-control form-value" required>
+                                    <a href="#" class="password-control"></a>
+                                    </div><!--password-->
+                                </div><!--col-->
+                            </div><!--row-->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="password">
+                                    <label for="password_re_reg">Повторите пароль</label>
+                                    <input type="password" id="password_re_reg" class="form-control form-value" required>
+                                    <a href="#" class="password-control"></a>
+                                    </div><!--password-->
+                                </div><!--col-->
+                            </div><!--row-->
+
+                        </div><!--container-->
+                    </form>
+
+
+
+                        </div><!--modal-body-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                            <button type="button" class="btn btn-primary" disabled>Регистрация</button>
+                          </div><!--modal footer-->
+                </div><!--register tab-->
+                
+              </div><!--tab-content-->
+              
+      </div><!--modal-content-->
+    </div><!--modal-dialog-->
+  </div><!--modal-->
+  <!----------------------MODAL END---------------------------->
+        </main>
+        <footer class="footer">
+            <p>&copy;2024 Ваш Шиномонтаж</p>
+        </footer>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

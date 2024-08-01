@@ -1,0 +1,156 @@
+  Запись на шиномонтаж
+  Если клиент записался на 5-ое мая 2024 08:30 и хочет записаться на другое время этого же числа
+  то надо предупредить клиента что он уже записан на время 08:30 и в окне предупреждения если клиент нажмет подтвердить
+  то предидущее время удалиться и запишется новое время. Тем самым исключить спам.
+  Если клиент больше трех раз менял время, то в четвертый раз предупредить о подозрительной активности и забанить на сутки
+  
+  
+  {'csrfmiddlewaretoken': ['KLgCjNEgi3iZ77TcJ8lqsWeiTpaJy0fkEosgoTSPx76VvIg0xX0m83jzLnrDIe2f'], 'avto': ['газель'], 'date': ['2024-05-01'], 'time': ['08:30']}
+  
+  
+  
+  
+  <table id="table_time">
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="08:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="08:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="09:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="09:30"></td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="10:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="10:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="11:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="11:30"></td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="12:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="12:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="13:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="13:30"></td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="14:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="14:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="15:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="15:30"></td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="16:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="16:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="17:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="17:30"></td>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input type="button" name="" class="btn btn-dark" value="18:00"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="18:30"></td>
+                                <td><input type="button" name="" class="btn btn-dark" value="19:00"></td>
+                                <td></td>
+                            </tr>
+                        </table>
+//==========================================================
+function table_update(all, busy) {
+    let count = 0;
+    let table = document.getElementById("table_time");
+    let rows = table.rows;
+    //изменяем данные
+    //rows[1].cells[1].innerHTML ='<input type="button" name="" class="btn btn-secondary" disabled value="10:30">';
+
+    for (let i = 0; i < 6; i++) {
+
+        for (let j = 0; j < 4; j++) {
+
+            if (count < 23) {
+                if (busy.indexOf(all[count]) > -1) {
+
+                    rows[i].cells[j].innerHTML = "<input type='button' name='time' class='btn btn-secondary'  disabled value='" + all[count] + "'></input>";
+                }
+                else {
+                    rows[i].cells[j].innerHTML = "<input id = 'btn" + count + "' onclick=click_btn('btn" + count + "','" + all[count] + "'); type='button' name='time' class='btn btn-dark time_btn' value='" + all[count] + "'></input>";
+
+                }
+                count++;
+            }
+
+        }//for2j
+
+    }//for1 i
+}
+
+
+##############################################################################
+# class Index(View):
+#   
+#     def get(self, request):
+#         today = date.today().strftime("%Y-%m-%d")
+#         time_busy = []
+#         # print(f"GET:{request.GET.get('date')}")
+#         if request.GET.get('date'):
+#             x = str(request.GET.get('date'))
+#             d = Recording_Time.objects.filter(pub_date__date=x).order_by("pub_date").values()
+#             for i in d:
+#                 time_busy.append(i['pub_date'].strftime("%H:%M"))
+#         else:
+#             d = Recording_Time.objects.filter(pub_date__date=today).order_by("pub_date").values()
+#             for i in d:
+#                 time_busy.append(i['pub_date'].strftime("%H:%M"))  
+#         # print(time_busy)        
+#         time_all = Time.objects.all()
+     
+#         time_group = utils.group_time_slots(time_all)
+#         year = datetime.date.today().year
+        
+#         context = {
+#         "title": "Ваш Шиномантаж",
+#         "year": year,
+#         "time_group":time_group,
+#         "time_busy": time_busy,
+#         "today":today,
+#         "date_max": date_max.strftime("%Y-%m-%d")
+#         }
+#         return render(request, "main/index.html", context=context)
+    
+#     def post(self, request):
+       
+#         if request.user.username:
+#             # записываем в бд
+            
+#             avto = request.POST.get("avto")
+#             data_ = request.POST.get("date")
+#             time_ = request.POST.get("time")
+#             param = str(data_) + " " + str(time_)
+#             # print(f"Авто:{avto}, data_:{data_}, time_:{time_}, param={param},user={request.user.email}")
+#             # проверям есть ли запись с таким временем и датой
+            
+#             m = Recording_Time.objects.filter(pub_date=param)
+#             # print(len(m))
+#             if len(m) > 0:
+#                 print("запись есть")
+#             else:
+#                 print("записи нет")
+#                 # print("записи нет")
+#                 user_id = User.objects.get(id = request.user.id)
+#                 s = Recording_Time.objects.create(avto=avto, pub_date=param, user=user_id)
+#                 print("create:", s) 
+                   
+#             return JsonResponse(data={'status': 201},status=200)
+#         else:
+#             return JsonResponse(
+#                 data={
+#                     'status': 400,
+#                     'error': 'Для записи, авторизуйтесь'
+#                 },
+#                 status=200
+#             )    
+ 
+#         # return JsonResponse(data={'status': 201},status=200)
+
+
+
+
+
+get_date = kwargs["date"]
+            reg = "(19[0-9][0-9]|20[0-9][0-9])-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])"
+            x = re.findall(reg, s)
+            if len(x) > 0:
+                d = Recording_Time.objects.filter(pub_date__date=x).order_by("pub_date").values()

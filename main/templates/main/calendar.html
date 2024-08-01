@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Мой календарь</h2>
+            <div class="alert alert-danger d-none error text-center" role="alert"></div>
+            <div class="alert alert-success d-none response text-center" role="alert"></div>
+            <table class="table table-sm table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Дата и время</th>
+                        <th>Автомобиль</th>
+                        <th>---</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in m%}
+
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{i.pub_date}}</td>
+                        <td>{{i.avto}}</td>
+                        <td>
+                            <form id="form_del" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="del" value="{{i.pk}}">
+                                <button type="submit" style="background:none;border: none;cursor: pointer;"><i style="color:#fff"  class="bi bi-trash"></i></button>
+                            {% comment %} <a href="#" onclick=del_time('{{i.pk}}');><i style="color:#fff"  class="bi bi-trash"></i></a> {% endcomment %}
+                            </form>
+                        </td>
+                    </tr>
+
+                    {%endfor%}
+                  </tbody>
+              </table>
+        </div><!--col-->
+    </div><!--row-->
+</div><!--container-->
+{% endblock content %}

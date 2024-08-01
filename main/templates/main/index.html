@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Добро пожаловать на наш сервис шиномонтажа!</h2>
+            <p>Мы предоставляем качественные услуги по установке и замене шин. Обеспечиваем быстрое и
+                профессиональное
+                обслуживание вашего автомобиля.</p>
+            <h3>Запишитесь на шиномонтаж</h3>
+            <div id="message"></div>
+            <div class="alert alert-danger d-none error_save" role="alert"></div>
+            <div class="alert alert-success d-none success_save" role="alert"></div>
+            <div class="enter d-none">
+                <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Вход</button>
+            </div>
+            <form id="form" method="post">
+                {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4 form-label">
+                    <input type="text" id="avto" name="avto" placeholder="Ваш автомобиль(марка)" required>
+                </div><!--col-->
+
+                <div class="col-md-4 form-label">
+                    <input type="date" id="date" name="date" required
+                    onchange="handleDateChange(event)">
+                          
+                </div><!--col-->
+
+            </div><!--row-->
+
+            <div class="row">
+                <div class="col-md-4 form-label">
+                    <!--TABLE-->
+                    <div id="table"></div>
+                    <!--TABLE END-->
+                    <div class="col-md-4 form-label my-1">
+                        <input type="submit" value="Записаться" class="btn btn-dark">
+                    </div>
+                </div>
+
+
+            </div><!--row-->
+                
+            </form>
+
+        </div><!--col-sm-12-->
+    </div>
+</div>
+{% endblock content %}

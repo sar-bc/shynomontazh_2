@@ -1,0 +1,22 @@
+
+======================
+virtual
+(linux) virtualenv venv  (./venv/bin/activate)
+(windows) python -m venv venv (.\venv\Scripts\activate)
+
+======================
+
+
+
+from main.models import Time, Recording_Time
+s = Recording_Time.objects.create(avto='avto', pub_date='2024-04-26 08:00', user_id=2)
+Recording_Time.objects.create(avto='avto', pub_date='2024-04-26 09:00', user_id=2)
+
+
+Recording_Time.objects.filter(pub_date='2024-05-02 08:00')
+Recording_Time.objects.filter(pub_date__date='2024-05-02', user_id=2)
+Recording_Time.objects.filter(pub_date__date='2024-05-02', user_id=2).distinct()
+
+s = Recording_Time.objects.get(pk=12).update(avto='jfj', pub_date='2024-05-02 08:30', user=2)
+s = Recording_Time.objects.get(pk=12)
+s = Recording_Time.objects.filter(user_id=2).get(pub_date__date='2024-05-02')
