@@ -2,6 +2,7 @@ from django.contrib import admin
 from django import forms
 from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 from django.forms.widgets import SplitDateTimeWidget
+from django.shortcuts import render
 
 from .models import *
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
@@ -21,21 +22,25 @@ class PageAdmin(admin.ModelAdmin):
     form = PageForm
 
 
-class RecordForm(forms.ModelForm):
-    event_date = forms.DateField(widget=AdminDateWidget(), label='Дата')
-    # event_time = forms.TimeField(widget=AdminTimeWidget())
-
-    class Meta:
-        model = Recording_Time
-        fields = ['avto']
+# class RecordForm(forms.ModelForm):
+#     event_date = forms.DateField(widget=AdminDateWidget(), label='Дата')
+#     # event_time = forms.TimeField(widget=AdminTimeWidget())
+#
+#     class Meta:
+#         model = Recording_Time
+#         fields = ['avto']
 
 
 class RecordingAdmin(admin.ModelAdmin):
-    form = RecordForm
+    # form = RecordForm
+    # change_list_template = "admin/custom_template.html"
+    # add_template = "admin/add_template.html"
+
+
 
     class Meta:
         model = Recording_Time
-        fields = ['avto']
+        fields = '__all__'
 
 
 admin.site.register(Recording_Time, RecordingAdmin)

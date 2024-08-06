@@ -1,0 +1,10 @@
+   {% extends "admin/change_form.html" %}
+
+   {% block content %}
+       <h1>Добавить новую запись</h1>
+       <form method="post">{% csrf_token %}
+           {{ adminform }}
+           <input type="submit" value="Сохранить">
+       </form>
+   {% endblock %}
+   
